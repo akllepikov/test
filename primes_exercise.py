@@ -20,15 +20,15 @@ def primes(max_num: int) -> list[int]:
     :returns: list of all prime numbers that are smaller than max_num.
     """
     assert max_num > 1
-    num_list= list()
-    tmp= 1
-    while max_num!= tmp: #generates list of all numbers that are smaller than max_num in ascending order
-        tmp+=1
-        num_list.append(tmp)
-        
-    prime_list = list() # adds all the prime numbers from num_list to empty prime_list
-    for num in num_list:
-            if is_prime(num) ==True:
-                prime_list.append(num) 
+    prime_list = list()
+    for num in range(2, max_num+1):
+        if is_prime(num) == True:
+            prime_list.append(num)
     return prime_list
+    
 #// END_TODO [Prime_numbers]
+print(primes(23))
+
+
+
+
