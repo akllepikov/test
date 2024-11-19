@@ -22,13 +22,17 @@ def primes(max_num: int) -> list[int]:
     assert max_num > 1
     prime_list = list()
     for num in range(2, max_num+1):
-        if is_prime(num) == True:
+        if is_prime(num):
             prime_list.append(num)
     return prime_list
+
     
+
+    ### start check prime from half of the number 16 is never a factor of 18    
+    ### check prime using prime numbers I know 
+
+    if __name__ == "__main__":
+            print(primes(17))
+
 #// END_TODO [Prime_numbers]
-print(primes(23))
-
-
-
 
