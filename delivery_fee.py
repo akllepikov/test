@@ -7,7 +7,24 @@ global ANTARCTICA
 global ASIA 
 global EUROPE 
 global OCEANIA 
-     
+
+
+class TariffItem:
+    max_mass: float
+    price_per_kg: float
+    def __init__(self, max_mass: float, price_per_kg: float) -> None:
+        self.max_mass = max_mass
+        self.price_per_kg = price_per_kg
+
+class Tariff:
+    items: list[TariffItem]
+    def get_price(self, kg: float):
+        raise NotImplementedError()
+
+class TariffSchedule:
+    sched: dict[str, Tariff]
+    def get_price(self, cont: str, kg: float):
+        raise NotImplementedError()
 
 class Continent:
     def __init__(self, name, price0_5, price6_10, price11_15, price16_20):
@@ -42,11 +59,12 @@ ANTARCTICA = Continent("Antarctica",20, 10 ,7.5 ,7)
 ASIA = Continent("Asia",12, 7, 5.5, 4) 
 EUROPE = Continent("Europe", 5, 4, 2.5, 1.5) 
 OCEANIA = Continent("Oceania",12, 7, 5.5, 4) 
-
-continent = AFRICA
-kg = 5
-package = Package(continent, kg)
     
 #// END_TODO [Send_a_parcel]
 
-print(package.price)
+if __name__ == "__main__":
+    continent = AFRICA
+    kg = 5
+    package = Package(continent, kg)
+
+    print(package.price)
